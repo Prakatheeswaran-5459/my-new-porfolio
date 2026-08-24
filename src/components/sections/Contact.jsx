@@ -4,6 +4,15 @@ import Reveal from '../common/Reveal';
 import WindowDots from '../common/WindowDots';
 
 export default function Contact({ profile }) {
+  // Get the actual URLs from profile or use defaults
+  const email = profile?.email || 'your.email@example.com';
+  const githubUrl = profile?.github || 'https://github.com/your-username';
+  const linkedinUrl = profile?.linkedin || 'https://linkedin.com/in/your-username';
+  
+  // Extract username from URL for display
+  const githubUsername = githubUrl.replace('https://github.com/', '');
+  const linkedinUsername = linkedinUrl.replace('https://www.linkedin.com/in/', '').replace('/', '');
+
   return (
     <section id="contact" data-section-id="contact" className="section">
       <Reveal>
@@ -18,14 +27,19 @@ export default function Contact({ profile }) {
           <div className="terminal-body mono">
             <div><span className="prompt">prakathees@portfolio</span>:<span className="path">~</span>$ cat contact.txt</div>
             <div className="contact-links">
-              <a className="contact-link" href={`mailto:${profile?.email || 'your.email@example.com'}`}>
-                <FiMail size={16} /> {profile?.email || 'your.email@example.com'}
+              {/* Email - using mailto: */}
+              <a className="contact-link" href={`mailto:${email}`}>
+                <FiMail size={16} /> {email}
               </a>
-              <a className="contact-link" href={profile?.github || '#'} target="_blank" rel="noreferrer">
-                <FaGithub size={16} /> https://github.com/Prakatheeswaran-5459
+              
+              {/* GitHub - using the actual URL from profile */}
+              <a className="contact-link" href={githubUrl} target="_blank" rel="noreferrer">
+                <FaGithub size={16} /> {githubUsername}
               </a>
-              <a className="contact-link" href={profile?.linkedin || '#'} target="_blank" rel="noreferrer">
-                <FaLinkedin size={16} /> https://www.linkedin.com/in/prakatheeswaran/
+              
+              {/* LinkedIn - using the actual URL from profile */}
+              <a className="contact-link" href={linkedinUrl} target="_blank" rel="noreferrer">
+                <FaLinkedin size={16} /> {linkedinUsername}
               </a>
             </div>
             <div style={{ marginTop: 10, color: 'var(--text-dim)' }}>
