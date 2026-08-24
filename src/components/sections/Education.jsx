@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap } from 'lucide-react'; // Or from 'react-icons/fi'
+// import { GraduationCap } from 'lucide-react'; // Or from 'react-icons/fi'
 import Reveal from '../common/Reveal';
 import { EDUCATION } from '../../data/education';
 
